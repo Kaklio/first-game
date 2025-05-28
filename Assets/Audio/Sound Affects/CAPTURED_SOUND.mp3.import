@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qx8onwxtr2jw"
+path="res://.godot/imported/CAPTURED_SOUND.mp3-298ed15c05fa16a0dee3815e9853201f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Affects/CAPTURED_SOUND.mp3"
+dest_files=["res://.godot/imported/CAPTURED_SOUND.mp3-298ed15c05fa16a0dee3815e9853201f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

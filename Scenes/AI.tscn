@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://di0nvb3dehp0b"]
+
+[ext_resource type="Script" uid="uid://cuflf2y33d7q4" path="res://Scenes/AI.gd" id="1_y8wit"]
+
+[node name="AI" type="Node"]
+script = ExtResource("1_y8wit")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

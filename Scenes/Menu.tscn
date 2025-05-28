@@ -1,0 +1,249 @@
+[gd_scene load_steps=24 format=3 uid="uid://cvfnuj8bk3ekh"]
+
+[ext_resource type="Script" uid="uid://cahs3k1u3wblp" path="res://Submission/SourceCode/Scenes/menu.gd" id="1_5yleq"]
+[ext_resource type="Texture2D" uid="uid://1jwa6mjgsvkb" path="res://Assets/Slimes/Menu_Img.jpg" id="2_5yleq"]
+[ext_resource type="PackedScene" uid="uid://bu8pxxq4pdvsf" path="res://Submission/SourceCode/Scenes/level_button.tscn" id="3_s2c3o"]
+[ext_resource type="Texture2D" uid="uid://meeq4fkw7hif" path="res://Assets/Buttons_atlas_texture.tres" id="3_ylpcl"]
+[ext_resource type="Texture2D" uid="uid://bpy1kd0g2vmdh" path="res://Assets/Level_Buttons/png/Play.png" id="4_dsmso"]
+[ext_resource type="Texture2D" uid="uid://dlcpckdt26rft" path="res://Assets/Level_Buttons/png/Button.png" id="5_ma218"]
+[ext_resource type="Texture2D" uid="uid://doxx3kcjsevj" path="res://Assets/Level_Buttons/png/Play_P.png" id="5_t8p2w"]
+[ext_resource type="AudioStream" uid="uid://tsbvcgo4xbq2" path="res://Assets/Audio/Music/Main_Menu.mp3" id="6_idohh"]
+[ext_resource type="Texture2D" uid="uid://r3x51qxdoa35" path="res://Assets/Level_Buttons/png/Options.png" id="6_krje8"]
+[ext_resource type="AudioStream" uid="uid://cknbfh1mlcxk5" path="res://Assets/Audio/Sound Affects/Menu_Button_Sound_3.mp3" id="6_wfhf6"]
+[ext_resource type="AudioStream" uid="uid://76gcdiot8fev" path="res://Assets/Audio/Sound Affects/Menu_Button_Sound_2.mp3" id="7_aobxe"]
+[ext_resource type="Texture2D" uid="uid://oduu6kuglak1" path="res://Assets/Level_Buttons/png/Options_P.png" id="7_dd46u"]
+[ext_resource type="AudioStream" uid="uid://c3cog31xcp7wt" path="res://Assets/Audio/Sound Affects/Menu_Button_Sound_4.mp3" id="8_ab40c"]
+[ext_resource type="Texture2D" uid="uid://qpap1r3t6vyq" path="res://Assets/Level_Buttons/png/Quit.png" id="8_n3nbb"]
+[ext_resource type="Texture2D" uid="uid://cgdabxlsld2m7" path="res://Assets/Level_Buttons/png/Quit_P.png" id="9_dm44m"]
+[ext_resource type="Texture2D" uid="uid://by6rd828fv6dr" path="res://Assets/Level_Buttons/png/Levels_Text.png" id="12_du1yi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5yleq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ylpcl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cx167"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dolsu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4eug"]
+
+[sub_resource type="Theme" id="Theme_dlksc"]
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_5yleq")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_ylpcl")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_cx167")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_dolsu")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_n4eug")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idohh"]
+atlas = ExtResource("5_ma218")
+region = Rect2(401, 2716, 181, 189)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5yleq")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 7.0
+offset_right = 1920.0
+offset_bottom = 1085.0
+theme = SubResource("Theme_dlksc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_5yleq")
+
+[node name="Top" type="MarginContainer" parent="ScrollContainer/VBoxContainer/Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.5
+offset_right = 512.5
+offset_bottom = 827.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 200
+
+[node name="Level_Grid" type="GridContainer" parent="ScrollContainer/VBoxContainer/Background/Top"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 5
+
+[node name="Level_Button1" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+
+[node name="Level_Button2" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 2
+
+[node name="Level_Button3" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 3
+
+[node name="Level_Button4" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 4
+
+[node name="Level_Button5" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 5
+
+[node name="Level_Button6" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 6
+
+[node name="Level_Button7" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 7
+
+[node name="Level_Button8" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 8
+
+[node name="Level_Button9" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 9
+
+[node name="Level_Button10" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 10
+
+[node name="Level_Button11" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 11
+
+[node name="Level_Button12" parent="ScrollContainer/VBoxContainer/Background/Top/Level_Grid" instance=ExtResource("3_s2c3o")]
+layout_mode = 2
+number = 12
+
+[node name="Center" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.5
+offset_top = -205.0
+offset_right = 179.5
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -50
+
+[node name="Play" type="TextureButton" parent="ScrollContainer/VBoxContainer/Background/Center"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+texture_normal = ExtResource("4_dsmso")
+texture_pressed = ExtResource("5_t8p2w")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Options" type="TextureButton" parent="ScrollContainer/VBoxContainer/Background/Center"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+texture_normal = ExtResource("6_krje8")
+texture_pressed = ExtResource("7_dd46u")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Quit" type="TextureButton" parent="ScrollContainer/VBoxContainer/Background/Center"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+texture_normal = ExtResource("8_n3nbb")
+texture_pressed = ExtResource("9_dm44m")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Bottom" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -179.5
+offset_top = -410.0
+offset_right = 179.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="Toggle_Sound" type="Button" parent="ScrollContainer/VBoxContainer/Background/Bottom"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 101
+text = "Toggle Sound"
+
+[node name="Resest_Progress" type="Button" parent="ScrollContainer/VBoxContainer/Background/Bottom"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 101
+text = "Reset Progress"
+
+[node name="Down" type="TextureButton" parent="ScrollContainer/VBoxContainer/Background"]
+layout_mode = 2
+offset_left = 1895.0
+offset_top = 5.0
+offset_right = 2076.0
+offset_bottom = 415.0
+rotation = 1.5708
+texture_normal = ExtResource("3_ylpcl")
+texture_pressed = SubResource("AtlasTexture_idohh")
+flip_h = true
+
+[node name="Up" type="TextureButton" parent="ScrollContainer/VBoxContainer/Background"]
+layout_mode = 2
+offset_left = 217.0
+offset_top = 2732.0
+offset_right = 576.0
+offset_bottom = 2921.0
+rotation = 1.5708
+texture_normal = ExtResource("3_ylpcl")
+texture_pressed = SubResource("AtlasTexture_idohh")
+flip_v = true
+
+[node name="Levels_Text" type="TextureRect" parent="ScrollContainer/VBoxContainer/Background"]
+layout_mode = 0
+offset_left = 679.0
+offset_top = -10.0
+offset_right = 1178.0
+offset_bottom = 195.0
+texture = ExtResource("12_du1yi")
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="Button_Sound_1" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("6_wfhf6")
+
+[node name="Button_Sound_2" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("7_aobxe")
+
+[node name="Button_Sound_3" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("8_ab40c")
+
+[node name="Menu_Music" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("6_idohh")
+autoplay = true
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Background/Center/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Background/Center/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Background/Center/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Background/Bottom/Toggle_Sound" to="." method="_on_toggle_sound_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Background/Bottom/Resest_Progress" to="." method="_on_resest_progress_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Background/Down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Background/Up" to="." method="_on_up_pressed"]

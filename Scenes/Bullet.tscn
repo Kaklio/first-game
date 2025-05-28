@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8qcws3fppwvy"]
+
+[ext_resource type="Texture2D" uid="uid://b88r5tf4r14k6" path="res://Assets/Visual Indicators/circle_GRAY.png" id="1_14k46"]
+[ext_resource type="Script" uid="uid://esnejwt2dywc" path="res://Scenes/Bullet.gd" id="1_vlxeq"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("1_14k46")
+script = ExtResource("1_vlxeq")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu8pxxq4pdvsf"]
+
+[ext_resource type="Texture2D" uid="uid://dlcpckdt26rft" path="res://Assets/Level_Buttons/png/Button.png" id="1_shs6u"]
+[ext_resource type="Script" uid="uid://c665ps8mvwwi4" path="res://Submission/SourceCode/Scenes/level_button.gd" id="2_txyvr"]
+[ext_resource type="FontFile" uid="uid://c4bd0shxklwqr" path="res://Assets/Fonts/LIQUIDISMPART2.TTF" id="3_k1cd6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14dx4"]
+atlas = ExtResource("1_shs6u")
+region = Rect2(548, 668, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shs6u"]
+atlas = ExtResource("1_shs6u")
+region = Rect2(759, 668, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txyvr"]
+atlas = ExtResource("1_shs6u")
+region = Rect2(1389, 668, 182, 189)
+
+[node name="Level_Button" type="TextureButton"]
+size_flags_vertical = 0
+texture_normal = SubResource("AtlasTexture_14dx4")
+texture_pressed = SubResource("AtlasTexture_shs6u")
+texture_disabled = SubResource("AtlasTexture_txyvr")
+script = ExtResource("2_txyvr")
+
+[node name="Number" type="Label" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 19.0
+offset_right = 152.0
+offset_bottom = 194.0
+theme_override_colors/font_color = Color(0.950249, 0.991993, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k1cd6")
+theme_override_font_sizes/font_size = 131
+text = "1"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

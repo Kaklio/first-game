@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bouprev76ko0d"
+path="res://.godot/imported/Upgrade_Available.mp3-0b6e918e7e243488f411a4e05b6ef566.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Affects/Upgrade_Available.mp3"
+dest_files=["res://.godot/imported/Upgrade_Available.mp3-0b6e918e7e243488f411a4e05b6ef566.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

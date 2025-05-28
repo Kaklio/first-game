@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8dbcoj2vlrj0"
+path="res://.godot/imported/HELP_ME_SOUND.mp3-4df03796ec7de2658a10854e61a08c63.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Affects/HELP_ME_SOUND.mp3"
+dest_files=["res://.godot/imported/HELP_ME_SOUND.mp3-4df03796ec7de2658a10854e61a08c63.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

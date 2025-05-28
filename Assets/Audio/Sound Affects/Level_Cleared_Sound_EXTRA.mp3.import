@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsc5htd4xdels"
+path="res://.godot/imported/Level_Cleared_Sound_EXTRA.mp3-56c7b67d8319289e46379fe7cd9829c3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Affects/Level_Cleared_Sound_EXTRA.mp3"
+dest_files=["res://.godot/imported/Level_Cleared_Sound_EXTRA.mp3-56c7b67d8319289e46379fe7cd9829c3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

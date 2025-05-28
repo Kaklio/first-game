@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b86p7bu6268jl"
+path="res://.godot/imported/Charging_Sound.mp3-50692d75a6e044a26b571dc24babb897.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Affects/Charging_Sound.mp3"
+dest_files=["res://.godot/imported/Charging_Sound.mp3-50692d75a6e044a26b571dc24babb897.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

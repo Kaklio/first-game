@@ -1,0 +1,561 @@
+[gd_scene load_steps=25 format=4 uid="uid://bcyohmhv50k1u"]
+
+[ext_resource type="Script" uid="uid://lwxfpf3thyx7" path="res://Submission/SourceCode/Scenes/Game.gd" id="1_u8elf"]
+[ext_resource type="Texture2D" uid="uid://dfel0aes48imb" path="res://Assets/Backgrounds/background_Forest.png" id="2_xpmu4"]
+[ext_resource type="Texture2D" uid="uid://hoctbpgkcdwh" path="res://Assets/Mossy/Mossy - TileSet.png" id="3_pwx6i"]
+[ext_resource type="Texture2D" uid="uid://dlcpckdt26rft" path="res://Assets/Level_Buttons/png/Button.png" id="4_5w8o7"]
+[ext_resource type="PackedScene" uid="uid://dg5mh5nq5l7bd" path="res://Submission/SourceCode/Scenes/barrack.tscn" id="5_mphk1"]
+[ext_resource type="PackedScene" uid="uid://dwnvkicuncrcx" path="res://Submission/SourceCode/Scenes/Fort.tscn" id="6_gwckx"]
+[ext_resource type="AudioStream" uid="uid://ey1hlhydapu0" path="res://Assets/Audio/Sound Affects/Sending_Sound_1.mp3" id="7_0rxtw"]
+[ext_resource type="PackedScene" uid="uid://blq3vnyd4ngwl" path="res://Submission/SourceCode/Scenes/Blob.tscn" id="7_xpmu4"]
+[ext_resource type="AudioStream" uid="uid://c01jpf2618w14" path="res://Assets/Audio/Sound Affects/Sending_Sound_2.mp3" id="8_tejkj"]
+[ext_resource type="AudioStream" uid="uid://ctcat2jnnkg7d" path="res://Assets/Audio/Sound Affects/Sneeze_Sound.mp3" id="9_2a6qp"]
+[ext_resource type="AudioStream" uid="uid://boungejtfy4ig" path="res://Assets/Audio/Sound Affects/Upgrading_Sound_1.mp3" id="10_3bwkj"]
+[ext_resource type="AudioStream" uid="uid://osddeaxiwg0y" path="res://Assets/Audio/Sound Affects/Upgrading_Sound_2.mp3" id="11_gchi3"]
+[ext_resource type="AudioStream" uid="uid://nrro6uqvh6ve" path="res://Assets/Audio/Sound Affects/Level_Cleared_Sound.mp3" id="12_o03jv"]
+[ext_resource type="AudioStream" uid="uid://llv5vtoj2b31" path="res://Assets/Audio/Sound Affects/Losing_Sound.mp3" id="13_wjqse"]
+[ext_resource type="AudioStream" uid="uid://doq1p3bu64rn6" path="res://Assets/Audio/Music/Music_7.mp3" id="14_i41kq"]
+[ext_resource type="PackedScene" uid="uid://clrjds8qnba1k" path="res://Submission/SourceCode/Scenes/Game_menu.tscn" id="15_urvfk"]
+[ext_resource type="PackedScene" uid="uid://d4cxn2y7o0gvd" path="res://Submission/SourceCode/Scenes/Level_Cleared.tscn" id="16_ecm5h"]
+[ext_resource type="PackedScene" uid="uid://yaxw20rtcrx6" path="res://Submission/SourceCode/Scenes/Lost_Screen.tscn" id="17_dg2tf"]
+[ext_resource type="PackedScene" uid="uid://di0nvb3dehp0b" path="res://Submission/SourceCode/Scenes/AI.tscn" id="18_s1err"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qxw0v"]
+vertices = PackedVector2Array(-56.1406, -52.1797, -46.0703, -52.3828, -35.8203, -52.3828, -10.0625, -47.5781, -10.0469, -32.2188, -10.0625, -32.2188, -158.703, -37.0234, -158.898, -46.5781, -10.0625, -62.9375, -10.0469, -47.5781, -36.0234, -62.4531, -36.0234, -72.7031, 205.5, -114.492, 179.023, -57.3438, 169.43, -57.1406, 158.703, -57.1406, 117.781, -67.7266, 117.578, -77.2969, 117.594, -88.0625, 10.0469, 116.539, 117.781, 85.8594, 174.258, 70.7031, 183.852, 70.5, 194.578, 70.5, 208.492, 117.492, 207.289, 24.4063, 194.383, 60.4297, 194.383, 50.1797, 199.68, 24.4063, 56.3438, -52.3828, 97.4531, -67.5391, 107.039, -67.7266, 158.898, -47.5781, 158.898, -36.8203, 20.4609, 4.29688, 207.031, 4.14844, 199.672, 4.29688, 179.219, -37.0234, 179.023, -47.0938, 168.969, -37.0234, 97.4609, -78.2969, 56.1406, -61.9375, 56.1406, -72.7031, 97.2578, -87.8594, 97.4531, 86.0625, 107.047, 85.8594, 10.0625, 106.023, 168.461, 24.4219, 174.063, 50.3828, 174.258, 60.4375, 117.578, 76.2969, 117.594, 65.5391, 153.102, 24.4219, -10.0469, 60.9375, -10.0625, 76.2969, -35.8203, 70.5, -10.0625, 60.9375, -10.2578, 35.0234, -10.0469, 45.0781, -36.0234, 60.4297, -36.0234, 50.1797, -30.7188, 24.4063, -20.4609, 24.4219, 183.82, 24.4219, 184.313, 50.3828, 91.6563, 24.4219, 97.2578, 65.7266, 97.4609, 75.2969, 56.3438, 70.5, 56.1406, 60.9375, 56.1406, 50.1797, 76.2969, 24.4219, -133.141, 65.7266, -132.938, 75.2969, -132.953, 86.0625, -174.063, 70.5, -174.258, 60.4297, -174.258, 50.1797, -168.461, 24.4219, -153.102, 24.4219, -158.898, -57.3438, -97.2578, -67.7266, -56.3438, -72.5, -56.1406, -62.9375, -97.4609, -77.2969, -97.4531, -88.0625, -10.0469, 76.2969, -10.0625, 91.6563, -208.477, 115.5, -112.617, 85.8594, -56.1406, 70.7031, -46.5469, 70.5, -112.82, 76.2969, -56.3438, 50.3828, -56.1406, 59.9375, -112.82, 65.5391, -107.023, 24.4219, -91.6563, 24.4219, -107.992, -67.7266, -117.594, -67.5391, -199.672, 4.29688, -205.031, 4.1875, -201.508, -109.5, -179.219, -57.1406, -179.023, -47.0703, -179.023, -36.8203, -10.0469, 107.023, -10.0469, 116.438, -10.0625, 107.023, 10.0625, 44.5781, 10.0469, 44.5781, 10.0625, 34.8203, 20.6563, 24.6172, 30.25, 24.4063, -46.0938, 50.3828, -60.9375, 24.4219, -60.9375, 24.4063, -46.0781, 24.4219, 45.5781, 24.4219, 60.9375, 24.4063, 60.9375, 24.4219, 46.0703, 50.3828, 35.8203, 50.3828, 76.2969, 24.4063, 91.6563, 24.4063, 107.023, 24.4219, 122.383, 24.4063, 122.383, 24.4219, 107.992, 65.7266, 137.742, 24.4063, 137.742, 24.4219, 153.102, 24.4063, 168.461, 24.4063, 183.82, 24.4063, 45.6094, 70.5, 10.0625, 90.6563, 10.0469, 90.6563, 10.0625, 75.2969, 36.0234, 70.7031, 36.0234, 60.4531, 10.0469, 75.2969, 10.0625, 59.9375, 10.0469, 59.9375, 45.5781, 24.4063, -183.82, 24.4219, -183.82, 24.4063, -168.461, 24.4063, -153.102, 24.4063, -137.742, 24.4219, -122.398, 65.7266, -137.742, 24.4063, -122.383, 24.4219, -122.383, 24.4063, -91.6563, 24.4063, -76.2969, 24.4219, -76.2969, 24.4063, -10.0625, -93.6563, -10.0469, -78.2969, -10.0625, -78.2969, -10.0469, -62.9375, 10.0625, -15.8594, 10.0469, -31.2188, 10.0625, -31.2188, 10.0469, -46.5781, 10.0625, -46.5781, 10.0469, -61.9375, 10.0625, -61.9375, 36.0234, -52.1797, 10.0469, -77.2969, 10.0625, -77.2969, 35.8203, -72.5, 36.0234, -62.4297, 10.0469, -92.6563, 10.0625, -92.6563, 107.023, 24.4063, 10.0469, 106.023, -10.0469, 91.6563, -107.023, 24.4063, -10.0625, -109.023, -10.0469, -93.6563, -10.1094, -111.844, 10.0469, -108.523, 10.0469, -112.094, -194.383, 60.4531, -194.383, 70.7031, -205.648, 24.4063, -199.68, 24.4063, -194.578, 50.3828, -168.953, -37.0234, -10.0469, -16.3594, -10.0625, -6.10156, -20.6563, 4.10156, -30.7266, 4.29688, -123.352, 85.8594, 46.0938, -52.3828, 10.2578, -6.29688, -184.789, 70.5, -184.328, 50.3828, -117.781, -87.8594, -117.578, -78.2969, -168.492, -57.1406, 20.6563, 14.3672, -0.0078125, 35.0234, -20.6563, 14.3516, 0.0078125, -6.29688, -45.6094, -72.5, 46.5469, -72.5, -107.047, -87.8594, 107.992, -87.8594)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), PackedInt32Array(8, 9, 3, 2, 10, 11), PackedInt32Array(12, 13, 14, 15, 16, 17, 18), PackedInt32Array(19, 20, 21, 22, 23, 24), PackedInt32Array(25, 24, 23, 26, 27, 28), PackedInt32Array(29, 30, 31, 16, 15, 32, 33, 34), PackedInt32Array(12, 35, 36, 37, 38, 13), PackedInt32Array(39, 37, 36, 34, 33), PackedInt32Array(40, 30, 29, 41, 42, 43), PackedInt32Array(44, 45, 20, 19, 46), PackedInt32Array(47, 48, 49, 21, 20, 50, 51, 52), PackedInt32Array(53, 54, 55, 56), PackedInt32Array(57, 58, 56, 55, 59, 60, 61, 62), PackedInt32Array(63, 28, 27, 64, 48), PackedInt32Array(65, 66, 67, 68, 69, 70, 71), PackedInt32Array(72, 73, 74, 75, 76, 77, 78, 79), PackedInt32Array(80, 81, 82, 83, 0, 7), PackedInt32Array(82, 81, 84, 85), PackedInt32Array(86, 87, 88, 89, 54), PackedInt32Array(90, 91, 55, 54, 89, 92), PackedInt32Array(93, 94, 90, 92, 95, 96, 97), PackedInt32Array(98, 81, 80, 99), PackedInt32Array(100, 101, 102, 103, 104, 105), PackedInt32Array(106, 107, 88, 108), PackedInt32Array(109, 110, 111, 112, 113), PackedInt32Array(114, 93, 115, 116, 117, 60), PackedInt32Array(118, 119, 120, 70, 121, 122), PackedInt32Array(120, 123, 71, 70), PackedInt32Array(71, 124, 65), PackedInt32Array(125, 126, 127, 51, 128, 66), PackedInt32Array(127, 129, 130, 51), PackedInt32Array(130, 131, 52, 51), PackedInt32Array(52, 132, 47), PackedInt32Array(47, 133, 63, 48), PackedInt32Array(134, 68, 67, 44, 135, 136, 137, 138), PackedInt32Array(139, 138, 137, 140, 141, 122), PackedInt32Array(118, 122, 141, 142, 109, 113, 143), PackedInt32Array(144, 145, 78, 77), PackedInt32Array(78, 146, 79), PackedInt32Array(79, 147, 148, 72), PackedInt32Array(149, 72, 148, 150, 151, 95), PackedInt32Array(151, 152, 96, 95), PackedInt32Array(97, 153, 154, 93), PackedInt32Array(154, 155, 115, 93), PackedInt32Array(102, 156, 157, 158, 85), PackedInt32Array(158, 159, 8, 11), PackedInt32Array(160, 161, 162), PackedInt32Array(162, 163, 164), PackedInt32Array(164, 165, 166, 167), PackedInt32Array(166, 168, 169, 170, 171, 167), PackedInt32Array(169, 172, 173), PackedInt32Array(65, 174, 125, 66), PackedInt32Array(46, 175, 135, 44), PackedInt32Array(87, 176, 108, 88), PackedInt32Array(96, 177, 97), PackedInt32Array(178, 179, 156, 102, 180), PackedInt32Array(181, 182, 12, 173), PackedInt32Array(183, 184, 88, 185, 186, 187), PackedInt32Array(105, 188, 6, 5, 189, 190, 191, 192, 100), PackedInt32Array(193, 89, 88, 74), PackedInt32Array(167, 194, 29, 34, 195, 160, 162), PackedInt32Array(169, 173, 12, 43), PackedInt32Array(196, 75, 74, 88, 184), PackedInt32Array(197, 187, 186, 144, 77), PackedInt32Array(60, 117, 61), PackedInt32Array(198, 199, 99, 80, 200, 103, 102), PackedInt32Array(34, 201, 112, 111, 202, 57, 62, 203, 191, 190, 204, 195), PackedInt32Array(11, 205, 82, 85, 158), PackedInt32Array(43, 42, 206, 170, 169), PackedInt32Array(102, 85, 207, 198), PackedInt32Array(167, 162, 164), PackedInt32Array(43, 12, 18, 208)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-202, -110, -209, 116, 209, 118, 206, -115)])
+agent_radius = 0.5
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1fcd"]
+texture = ExtResource("3_pwx6i")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-31.2258, 128, -34.5227, -31.3843, 128, -31.2954, 128, 128)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 128, -128, -31.2954, 128, -31.3843, 128, 128)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 128, -128, -31.2954, 128, -31.3843, 128, 128)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 128, -128, -31.2954, 128, -31.3843, 128, 128)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 128, -128, -31.2954, 128, -31.3843, 128, 128)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -31.2258, 31.3843, -34.5227, 31.2954, 128, -128, 128)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-31.2258, 128, -34.5227, -31.3843, 128, -31.2954, 128, 128)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -31.2258, 31.3843, -34.5227, 31.2954, 128, -128, 128)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(38.5846, 128, 36.441, 40.7282, 128, 38.5846, 128, 128)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 38.5846, -40.7282, 36.441, -38.5846, 128, -128, 128)
+10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 64, -128, 64)
+11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 0, -128, 0, 64, -128, 64)
+12:0/0 = 0
+13:0/0 = 0
+13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(77, -25, 82.5679, 106.06, 83.5, 128, -94, 128, -80.5, -30)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -38.5846, 40.7282, -36.441, 38.5846, -128, 128, -128)
+9:1/0 = 0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-38.5846, -128, -36.441, -40.7282, -128, -38.5846, -128, -128)
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(83.5, -128, 83.5, 128, -94, 128, -92, -128)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+8:2/0 = 0
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-31.2258, 128, -34.5227, -31.3843, 128, -31.2954, 128, 128)
+9:2/0 = 0
+9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -31.2258, 31.3843, -34.5227, 31.2954, 128, -128, 128)
+10:2/0 = 0
+10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 64, -128, 64)
+11:2/0 = 0
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 64, -128, 64)
+12:2/0 = 0
+13:2/0 = 0
+13:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(83.5, -128, 83.5, 128, -94, 128, -92, -128)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+8:3/0 = 0
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 31.2258, -31.3843, 34.5227, -31.2954, -128, 128, -128)
+9:3/0 = 0
+9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(31.2258, -128, 34.5227, 31.3843, -128, 31.2954, -128, -128)
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+13:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(83.5, -128, 83.5, 128, -94, 128, -92, -128)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+8:4/0 = 0
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(38.5846, 128, 36.441, 40.7282, 128, 38.5846, 128, 128)
+9:4/0 = 0
+9:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 40.7282, -38.5846, 38.5846, -38.5846, 128, -128, 128)
+10:4/0 = 0
+10:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 0, -128, 128, 0, 128, 128, 0, 128, -128, 0)
+11:4/0 = 0
+11:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 128, -128, 0, -128, 128, 0, 128)
+12:4/0 = 0
+13:4/0 = 0
+13:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(83.5, -128, 83.5, 128, -94, 128, -92, -128)
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 31.2258, -31.3843, 34.5227, -31.2954, -128, 128, -128)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 31.2954, -128, 31.3843, -128, -128)
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 31.2954, -128, 31.3843, -128, -128)
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 31.2954, -128, 31.3843, -128, -128)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 31.2954, -128, 31.3843, -128, -128)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(31.2258, -128, 34.5227, 31.3843, -128, 31.2954, -128, -128)
+6:5/0 = 0
+6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 31.2258, -31.3843, 34.5227, -31.2954, -128, 128, -128)
+7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(31.2258, -128, 34.5227, 31.3843, -128, 31.2954, -128, -128)
+8:5/0 = 0
+8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -40.7282, 38.5846, -38.5846, 38.5846, -128, 128, -128)
+9:5/0 = 0
+9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40.7282, -128, -38.5846, -38.5846, -128, -38.5846, -128, -128)
+10:5/0 = 0
+10:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -128, 128, 0, 128, -128, 0, -128)
+11:5/0 = 0
+11:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 0, -128, 128, 0, 128, 128, 0, 128, -128, 0)
+12:5/0 = 0
+12:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 128, -128, 0, -128, 128, 0, 128)
+13:5/0 = 0
+13:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 22, -51.5, -61, -79.5, -128, 94, -128, 53, -1)
+0:6/0 = 0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-31.2258, 128, -34.5227, -31.3843, 128, -31.2954, 128, 128)
+1:6/0 = 0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 128, -128, -31.2954, 128, -31.3843, 128, 128)
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 128, -128, -31.2954, 128, -31.3843, 128, 128)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -31.2258, 31.3843, -34.5227, 31.2954, 128, -128, 128)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-31.2258, 128, -34.5227, -31.3843, 128, -31.2954, 128, 128)
+5:6/0 = 0
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -31.2258, 31.3843, -34.5227, 31.2954, 128, -128, 128)
+6:6/0 = 0
+7:6/0 = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 0, 0, 128, 128, 128, 128, 0)
+8:6/0 = 0
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 0, 0, 128, -128, 128, -128, 0, 0, -128)
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+11:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -128, 128, 0, 128, -128, 0, -128)
+12:6/0 = 0
+12:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 0, -128, 128, 0, 128, 128, 0, 128, -128, 0)
+13:6/0 = 0
+13:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 128, -128, 0, -128, 128, 0, 128)
+0:7/0 = 0
+0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 31.2258, -31.3843, 34.5227, -31.2954, -128, 128, -128)
+1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 31.2954, -128, 31.3843, -128, -128)
+2:7/0 = 0
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 31.2954, -128, 31.3843, -128, -128)
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(31.2258, -128, 34.5227, 31.3843, -128, 31.2954, -128, -128)
+4:7/0 = 0
+4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 31.2258, -31.3843, 34.5227, -31.2954, -128, 128, -128)
+5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(31.2258, -128, 34.5227, 31.3843, -128, 31.2954, -128, -128)
+6:7/0 = 0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 0, 0, 128, 128, 128, 128, 0)
+7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 0, 0, 128, -128, 128, -128, 0, 0, -128)
+8:7/0 = 0
+8:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 0, 0, -128, -128, -128, -128, 0)
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+12:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -128, 128, 0, 128, -128, 0, -128)
+13:7/0 = 0
+13:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -128, -128, -128, -128, 0, 0, 128, 128, 0)
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 0, 0, 128, 128, 128, 128, 0)
+6:8/0 = 0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 0, 0, 128, -128, 128, -128, 0, 0, -128)
+7:8/0 = 0
+7:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 0, 0, -128, -128, -128, -128, 0)
+8:8/0 = 0
+8:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-31.2258, 128, -34.5227, -31.3843, 128, -31.2954, 128, 128)
+9:8/0 = 0
+9:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 128, -128, -31.2954, 128, -31.3843, 128, 128)
+10:8/0 = 0
+10:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 128, -128, -31.2954, 128, -31.3843, 128, 128)
+11:8/0 = 0
+11:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 128, -128, -31.2954, 128, -31.3843, 128, 128)
+12:8/0 = 0
+12:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 128, -128, -31.2954, 128, -31.3843, 128, 128)
+13:8/0 = 0
+13:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -31.2258, 31.3843, -34.5227, 31.2954, 128, -128, 128)
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 0, 128, -128, 0, -128, -128, 0, 0, 128)
+6:9/0 = 0
+6:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 0, 0, -128, -128, -128, -128, 0)
+7:9/0 = 0
+8:9/0 = 0
+8:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+13:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+0:10/0 = 0
+0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, 61, -51.5, 128, -79.5, 128, 94, 64, 64)
+1:10/0 = 0
+1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -85, 128, -83.5, 128, 94, -128, 92)
+2:10/0 = 0
+2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -83.5, 128, -83.5, 128, 94, -128, 92)
+3:10/0 = 0
+3:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -83.5, 128, -83.5, 128, 94, -128, 92)
+4:10/0 = 0
+4:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -83.5, 128, -83.5, 128, 94, -128, 92)
+5:10/0 = 0
+5:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(25, -77, -106.06, -82.5679, -128, -83.5, -128, 94, 30, 80.5)
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+8:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+8:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+13:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+0:12/0 = 0
+0:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(81.5992, 81.5992, 40.7996, 128, -128, 128, -128, -128, 128, -128, 128, 21.969)
+1:12/0 = 0
+1:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-81.5992, 81.5992, -128, 40.7996, -128, -128, 128, -128, 128, 128, -21.969, 128)
+2:12/0 = 0
+2:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(81.5992, 81.5992, 40.7996, 128, -128, 128, -128, -128, 128, -128, 128, 21.969)
+3:12/0 = 0
+3:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-81.5992, 81.5992, -128, 40.7996, -128, -128, 128, -128, 128, 128, -21.969, 128)
+4:12/0 = 0
+4:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+5:12/0 = 0
+5:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(81.5992, -81.5992, 128, -40.7996, 128, 128, -128, 128, -128, -128, 21.969, -128)
+6:12/0 = 0
+6:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-81.5992, -81.5992, -40.7996, -128, 128, -128, 128, 128, -128, 128, -128, -21.969)
+7:12/0 = 0
+7:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+8:12/0 = 0
+8:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 128, -31.2954, 128, -31.3843, -128, 128, -128)
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+13:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 31.2954, -128, 31.3843, 128, -128, 128)
+0:13/0 = 0
+0:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(81.5992, -81.5992, 128, -40.7996, 128, 128, -128, 128, -128, -128, 21.969, -128)
+1:13/0 = 0
+1:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-81.5992, -81.5992, -40.7996, -128, 128, -128, 128, 128, -128, 128, -128, -21.969)
+2:13/0 = 0
+2:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(81.5992, -81.5992, 128, -40.7996, 128, 128, -128, 128, -128, -128, 21.969, -128)
+3:13/0 = 0
+3:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-81.5992, -81.5992, -40.7996, -128, 128, -128, 128, 128, -128, 128, -128, -21.969)
+4:13/0 = 0
+4:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-81.5992, 81.5992, -128, 40.7996, -128, -128, 128, -128, 128, 128, -21.969, 128)
+5:13/0 = 0
+5:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+6:13/0 = 0
+6:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+7:13/0 = 0
+7:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(81.5992, 81.5992, 40.7996, 128, -128, 128, -128, -128, 128, -128, 128, 21.969)
+8:13/0 = 0
+8:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 31.2258, -31.3843, 34.5227, -31.2954, -128, 128, -128)
+9:13/0 = 0
+9:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 31.2954, -128, 31.3843, -128, -128)
+10:13/0 = 0
+10:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 31.2954, -128, 31.3843, -128, -128)
+11:13/0 = 0
+11:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 31.2954, -128, 31.3843, -128, -128)
+12:13/0 = 0
+12:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, 128, 31.2954, -128, 31.3843, -128, -128)
+13:13/0 = 0
+13:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(31.2258, -128, 34.5227, 31.3843, -128, 31.2954, -128, -128)
+
+[sub_resource type="TileSet" id="TileSet_ln4nl"]
+tile_size = Vector2i(256, 256)
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_y1fcd")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu5mq"]
+atlas = ExtResource("4_5w8o7")
+region = Rect2(197, 2280, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btea2"]
+atlas = ExtResource("4_5w8o7")
+region = Rect2(606, 2280, 181, 189)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_u8elf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -1)
+zoom = Vector2(4.805, 4.805)
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -5
+offset_left = -564.0
+offset_top = -623.0
+offset_right = 364.0
+offset_bottom = 170.0
+texture = ExtResource("2_xpmu4")
+metadata/_edit_use_anchors_ = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_qxw0v")
+
+[node name="Layer0" type="TileMapLayer" parent="NavigationRegion2D"]
+use_parent_material = true
+position = Vector2(0, -1)
+scale = Vector2(0.06, 0.06)
+tile_map_data = PackedByteArray("AAD7//3/AAAEAAgAAAD///j/AAAGAAAAAAD///n/AAAGAAEAAAD///r/AAAGAAIAAAD///v/AAAGAAMAAAD///z/AAAGAAEAAAAAAPj/AAAHAAAAAAAAAPn/AAAHAAEAAAAAAPr/AAAHAAIAAAAAAPv/AAAHAAMAAAAAAPz/AAAHAAEAAAD///3/AAAGAAIAAAD///7/AAAIAAoAAAAAAP3/AAAHAAIAAAAAAP7/AAAHAAMAAAD//wgAAAAGAAAAACAAAAgAAAAHAAAAACD//wcAAAAGAAEAACAAAAcAAAAHAAEAACD//wYAAAAGAAIAACAAAAYAAAAHAAIAACD//wUAAAAGAAMAACAAAAUAAAAHAAMAACD//wQAAAAGAAEAACAAAAQAAAAHAAEAACD//wMAAAAGAAIAACAAAAMAAAAHAAIAACD1/wEAAAAHAAMAAED4/wAAAAAIAAoAAED4/wEAAAAHAAMAAED3/wAAAAAGAAIAAED3/wEAAAAHAAIAAED2/wAAAAAGAAEAAED2/wEAAAAHAAEAAED1/wAAAAAGAAMAAED0/wAAAAAGAAIAAED0/wEAAAAHAAIAAEDz/wAAAAAGAAEAAEDz/wEAAAAHAAEAAEDy/wAAAAAGAAAAAEDy/wEAAAAHAAAAAED8/wAAAAAGAAIAAED8/wEAAAAHAAIAAED7/wAAAAAGAAEAAED7/wEAAAAHAAEAAED6/wAAAAAGAAMAAED6/wEAAAAHAAMAAED5/wEAAAAHAAIAAED5/wAAAAAGAAIAAED9/wAAAAAIAAoAAED9/wEAAAAHAAQAAFAHAAAAAAAIAAoAAFAGAAAAAAAGAAIAAFAFAAAAAAAIAAoAAFAEAAAAAAAGAAMAAFADAAAAAAAGAAEAAFACAAAAAAAGAAIAAFAHAAEAAAAHAAMAAFAGAAEAAAAHAAIAAFAFAAEAAAAHAAMAAFAEAAEAAAAHAAMAAFADAAEAAAAHAAEAAFACAAEAAAAHAAIAAFALAAAAAAAGAAIAAFAKAAAAAAAGAAMAAFAJAAAAAAAGAAEAAFAIAAAAAAAGAAIAAFALAAEAAAAHAAIAAFAKAAEAAAAHAAMAAFAJAAEAAAAHAAEAAFAIAAEAAAAHAAIAAFANAAAAAAAGAAAAAFAMAAAAAAAGAAEAAFANAAEAAAAHAAAAAFAMAAEAAAAHAAEAAFD/////AAAGAAUAAAAAAP//AAAHAAUAAAABAAAAAAAGAAUAAFABAAEAAAAHAAUAAFD+/wEAAAAGAAUAAGAAAAIAAAAGAAUAADD//wIAAAAHAAUAADD+/wAAAAAHAAUAAGD4//r/AAAIAAIAAAD4//v/AAAIAAMAAAD5//r/AAAJAAIAAAD5//v/AAAJAAMAAAD8//v/AAAIAAIAAAD8//z/AAAIAAMAAAD9//v/AAAJAAIAAAD9//z/AAAJAAMAAAACAPv/AAAIAAIAAAACAPz/AAAIAAMAAAADAPv/AAAJAAIAAAADAPz/AAAJAAMAAAAGAPr/AAAIAAIAAAAGAPv/AAAIAAMAAAAHAPr/AAAJAAIAAAAHAPv/AAAJAAMAAADz/wMAAAAIAAIAAADz/wQAAAAIAAMAAAD0/wMAAAAJAAIAAAD0/wQAAAAJAAMAAAD3/wQAAAAIAAIAAAD3/wUAAAAIAAMAAAD4/wQAAAAJAAIAAAD4/wUAAAAJAAMAAAAGAAQAAAAIAAIAAAAGAAUAAAAIAAMAAAAHAAQAAAAJAAIAAAAHAAUAAAAJAAMAAAALAAMAAAAIAAIAAAALAAQAAAAIAAMAAAAMAAMAAAAJAAIAAAAMAAQAAAAJAAMAAAD0//z/AAAIAAIAAAD1//z/AAAJAAIAAAD0//3/AAAIAAMAAAD1//3/AAAJAAMAAAAKAPz/AAAIAAIAAAALAPz/AAAJAAIAAAAKAP3/AAAIAAMAAAALAP3/AAAJAAMAAAD8/wMAAAAEAAYAAAD8/wQAAAAEAAcAAAD9/wMAAAAFAAYAAAD9/wQAAAAFAAcAAAACAAMAAAAEAAYAAAACAAQAAAAEAAcAAAADAAMAAAAFAAYAAAADAAQAAAAFAAcAAAA=")
+tile_set = SubResource("TileSet_ln4nl")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Pause_Button" type="TextureButton" parent="."]
+z_index = 3
+offset_left = 176.0
+offset_top = -111.0
+offset_right = 190.0
+offset_bottom = -96.0
+scale = Vector2(1.40866, 1.32424)
+texture_normal = SubResource("AtlasTexture_eu5mq")
+texture_pressed = SubResource("AtlasTexture_btea2")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="blobs" type="Node2D" parent="."]
+
+[node name="Barrack" parent="blobs" instance=ExtResource("5_mphk1")]
+position = Vector2(-171, -63)
+Team = 1
+
+[node name="Barrack2" parent="blobs" instance=ExtResource("5_mphk1")]
+position = Vector2(169, -63)
+Team = 2
+initial_count = 10
+
+[node name="Barrack3" parent="blobs" instance=ExtResource("5_mphk1")]
+position = Vector2(160, 100)
+Team = 4
+initial_count = 10
+
+[node name="Barrack4" parent="blobs" instance=ExtResource("5_mphk1")]
+position = Vector2(-178, 100)
+Team = 3
+initial_count = 10
+
+[node name="Fort" parent="blobs" instance=ExtResource("6_gwckx")]
+position = Vector2(57, -8)
+Team = 2
+initial_count = 10
+
+[node name="Fort2" parent="blobs" instance=ExtResource("6_gwckx")]
+position = Vector2(-45, 39)
+Team = 3
+initial_count = 10
+
+[node name="Fort3" parent="blobs" instance=ExtResource("6_gwckx")]
+position = Vector2(46, 40)
+Team = 4
+initial_count = 10
+
+[node name="Fort4" parent="blobs" instance=ExtResource("6_gwckx")]
+position = Vector2(-55, -8)
+Team = 1
+initial_count = 10
+
+[node name="Blob" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(-186, 45)
+
+[node name="Blob2" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(-170, 0)
+
+[node name="Blob3" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(166, -3)
+
+[node name="Blob4" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(107, -93)
+
+[node name="Blob5" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(46, -78)
+
+[node name="Blob6" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(-48, -78)
+
+[node name="Blob7" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(-109, -92)
+
+[node name="Blob8" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(184, 45)
+
+[node name="Blob9" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(107, 60)
+
+[node name="Blob10" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(51, 99)
+
+[node name="Blob11" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(-75, 98)
+
+[node name="Blob12" parent="blobs" instance=ExtResource("7_xpmu4")]
+position = Vector2(-122, 59)
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Sending_Sound_1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_0rxtw")
+
+[node name="Sending_Sound_2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_tejkj")
+
+[node name="Sneeze_Sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_2a6qp")
+
+[node name="Upgrading_Sound_1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_3bwkj")
+
+[node name="Upgrading_Sound_2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("11_gchi3")
+
+[node name="Level_Cleared_Sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("12_o03jv")
+
+[node name="Losing_Sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("13_wjqse")
+
+[node name="Level_Theme" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("14_i41kq")
+volume_db = -20.429
+autoplay = true
+parameters/looping = true
+
+[node name="Pause" parent="." instance=ExtResource("15_urvfk")]
+visible = false
+offset_left = -204.0
+offset_top = -119.0
+offset_right = -204.0
+offset_bottom = -119.0
+scale = Vector2(0.788623, 0.733939)
+
+[node name="Next_Lvl_Srceen" parent="." instance=ExtResource("16_ecm5h")]
+visible = false
+offset_left = -203.0
+offset_top = -116.0
+offset_right = -129.2
+offset_bottom = -77.48
+scale = Vector2(0.786005, 0.728601)
+
+[node name="Lost_Screen" parent="." instance=ExtResource("17_dg2tf")]
+visible = false
+offset_left = -203.0
+offset_top = -118.0
+offset_right = -129.2
+offset_bottom = -79.48
+scale = Vector2(0.783502, 0.735981)
+
+[node name="AI" parent="." instance=ExtResource("18_s1err")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Pause_Button" to="." method="_on_pause_button_pressed"]

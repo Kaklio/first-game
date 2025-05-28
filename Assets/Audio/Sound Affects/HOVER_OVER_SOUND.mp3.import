@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1k1u00fnp50"
+path="res://.godot/imported/HOVER_OVER_SOUND.mp3-981366a66a748e640cc6b4005b3f15a6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Affects/HOVER_OVER_SOUND.mp3"
+dest_files=["res://.godot/imported/HOVER_OVER_SOUND.mp3-981366a66a748e640cc6b4005b3f15a6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

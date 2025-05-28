@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://boungejtfy4ig"
+path="res://.godot/imported/Upgrading_Sound_1.mp3-19889ede71142f2fbd9bac29739b758f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Affects/Upgrading_Sound_1.mp3"
+dest_files=["res://.godot/imported/Upgrading_Sound_1.mp3-19889ede71142f2fbd9bac29739b758f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

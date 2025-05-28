@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1k81lr7i547v"]
+
+[ext_resource type="Script" uid="uid://b7a62gucjsbts" path="res://Submission/SourceCode/Scenes/Coin.gd" id="1_wjfxq"]
+[ext_resource type="Texture2D" uid="uid://bkopsrkln2tk" path="res://Assets/Slimes/blue_Bubble.png" id="2_phb8h"]
+[ext_resource type="Texture2D" uid="uid://bfu1rnuehiqa8" path="res://Assets/Slimes/green_Bubble.png" id="2_wjfxq"]
+[ext_resource type="Texture2D" uid="uid://bgdukuv6tfofh" path="res://Assets/Slimes/pink_Bubble.png" id="3_pjf33"]
+[ext_resource type="Texture2D" uid="uid://4v74r7ibx6oj" path="res://Assets/Slimes/red_Bubble.png" id="5_npqt6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ma10"]
+atlas = ExtResource("2_phb8h")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sg27"]
+atlas = ExtResource("5_npqt6")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0t63x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ma10")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wjfxq")
+}],
+"loop": true,
+"name": &"gray",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wjfxq")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pjf33")
+}],
+"loop": true,
+"name": &"pink",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sg27")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v7riw"]
+radius = 4.0
+
+[node name="Coin" type="CharacterBody2D"]
+collision_mask = 2
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_wjfxq")
+SPEED = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.98023e-07, -2.38419e-07)
+scale = Vector2(0.0133333, 0.0133333)
+sprite_frames = SubResource("SpriteFrames_0t63x")
+animation = &"blue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v7riw")
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="Navigation"]
+wait_time = 0.051
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+path_desired_distance = 10.57
+
+[node name="Label" type="Label" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 65.0
+offset_bottom = 79.0
+scale = Vector2(0.114867, 0.0878778)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 1
+
+[node name="Double_Click_Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Double_Click_Timer" to="." method="_on_double_click_timer_timeout"]
