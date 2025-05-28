@@ -2,6 +2,7 @@
 
 ```
 To Run the game in Debug
+OR
 Export to any platform
 ```
 ## 1) Download Godot Game Enigne:https://godotengine.org/download/windows/
